@@ -1,35 +1,29 @@
-import React, { Component } from 'react';
-import './GreetingComponent.css';
-import { getGreeting } from './GreetingHelpers';
+import React, { useEffect, useState } from "react"
+import "./GreetingComponent.css"
+import { getGreeting } from "./GreetingHelpers"
 
-class GreetingComponent extends Component {
-  constructor(props) {
-    super(props);
+function GreetingComponent() {
+  const [greeting, setGreeting] = useState(getGreeting())
 
-    this.state = {greeting: getGreeting()};
+  const updateGreeting = () => {
+    setGreeting(getGreeting())
   }
 
-  updateGreeting() {
-    this.setState({greeting: getGreeting()});
-  }
+  useEffect(() => {
+    const timerId = setInterval(() => {
+      updateGreeting()
+    }, 20000)
 
-  componentDidMount() {
-    this.timerId = setInterval(() => {
-      this.updateGreeting();
-    }, 20000);
-  }
+    return () => {
+      clearInterval(timerId)
+    }
+  }, [])
 
-  componentWillUnmount() {
-    clearInterval(this.timerId);
-  }
-
-  render() {
-    return (
-      <div className="greet">
-          {this.state.greeting}
-      </div>
-    );
-  }
+  return (
+    <div className="greet" data-testid="greeting-container">
+      {greeting}
+    </div>
+  )
 }
 
-export default GreetingComponent;
+export default GreetingComponent

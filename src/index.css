@@ -15,18 +15,3 @@ body {
   background-size: cover;
   background-position: center;
 }
-
-main {
-  position: absolute;
-  top: 30%;
-  text-align: center;
-  width: 100%;
-}
-
-footer {
-  position: absolute;
-  bottom: 2%;
-  text-align: center;
-  width: 100%;
-  font-weight: normal;
-}

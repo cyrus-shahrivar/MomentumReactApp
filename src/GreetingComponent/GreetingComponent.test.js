@@ -1,9 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import GreetingComponent from './GreetingComponent';
+import { render, screen } from "@testing-library/react"
+import GreetingComponent from "./GreetingComponent"
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<GreetingComponent />, div);
-  ReactDOM.unmountComponentAtNode(div);
-});
+test("renders greeting component", () => {
+  render(<GreetingComponent />)
+  const greetingContainer = screen.getByTestId("greeting-container")
+  expect(greetingContainer).toBeInTheDocument()
+})

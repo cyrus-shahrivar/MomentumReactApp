@@ -1,9 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import TimeComponent from './TimeComponent';
+import { render, screen } from "@testing-library/react"
+import TimeComponent from "./TimeComponent"
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<TimeComponent />, div);
-  ReactDOM.unmountComponentAtNode(div);
-});
+test("renders time component", () => {
+  render(<TimeComponent />)
+  const timeContainer = screen.getByTestId("time-container")
+  expect(timeContainer).toBeInTheDocument()
+})
