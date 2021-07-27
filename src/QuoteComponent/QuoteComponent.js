@@ -1,20 +1,23 @@
 import React, { useState, useEffect } from "react"
 import "./QuoteComponent.css"
-import quotes from "./Quotes.json"
 
 function QuoteComponent() {
   const [quote, setQuote] = useState("")
   const [author, setAuthor] = useState("")
 
-  const getRandomNumber = () => {
-    return Math.floor(Math.random() * quotes.length)
+  const getRandomNumber = (num) => {
+    return Math.floor(Math.random() * num)
   }
 
   useEffect(() => {
-    const randomNumber = getRandomNumber()
+    fetch("https://cyrus-shahrivar.github.io/simple-json-host/quotes.json")
+      .then((response) => response.json())
+      .then((quotes) => {
+        const randomNumber = getRandomNumber(quotes.length)
 
-    setQuote(quotes[randomNumber].quote)
-    setAuthor(`- ${quotes[randomNumber].author}`)
+        setQuote(quotes[randomNumber].quote)
+        setAuthor(`- ${quotes[randomNumber].author}`)
+      })
   }, [])
 
   return (
