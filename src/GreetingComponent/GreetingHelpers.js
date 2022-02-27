@@ -1,16 +1,11 @@
-export function getGreeting(params) {
-    const currentHour = (new Date()).getHours();
-    var greeting;
-
-    if (currentHour > 20) {
-        greeting = 'Good Night';
-    } else if (currentHour > 17) {
-        greeting = 'Good Evening';
-    } else if (currentHour > 12) {
-        greeting = 'Good Afternoon';
-    } else {
-        greeting = 'Good Morning';
-    }
-
-    return greeting;
+/**
+ * @description Greeting function based on local hour in day
+ * @param {string} currentHour
+ * @returns {string} greeting
+ */
+export function getGreeting(currentHour) {
+  if (currentHour < 12) return "Good Morning"
+  if (currentHour < 17) return "Good Afternoon"
+  if (currentHour < 20) return "Good Evening"
+  return "Good Night"
 }

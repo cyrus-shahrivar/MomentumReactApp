@@ -3,7 +3,7 @@ import "./GreetingComponent.css"
 import { getGreeting } from "./GreetingHelpers"
 
 function GreetingComponent() {
-  const [greeting, setGreeting] = useState(getGreeting())
+  const [greeting, setGreeting] = useState(getGreeting(new Date().getHours()))
 
   const updateGreeting = () => {
     setGreeting(getGreeting())
