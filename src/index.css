@@ -11,7 +11,7 @@ html, body {
 
 body {
   background-color: rgba(20,20,20,0.8);
-  background-image: url(https://source.unsplash.com/random/1600x900);
+  background: linear-gradient(#e66465, #9198e5);
   background-size: cover;
   background-position: center;
 }
